@@ -143,6 +143,69 @@ namespace m_project2
                     }
 
                 }
+                if (c[0] == 'b')
+                {
+                    int t = 0;
+                    while (1 == 1)
+                    {
+                        Console.Write("Enter username:");
+                        string username1 = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.Write("Enter password");
+                        string password1 = Console.ReadLine();
+                        Console.WriteLine();
+
+                        for (int i = 0; i < tch.Length; i++)
+                        {
+                            if (tch[i].username == username1 && tch[i].password == password1)
+                            {
+                                Console.WriteLine("correct!");
+                                t = i;
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("incorrect,pleas enter again!");
+                            }
+                        }
+                    }
+                    Console.WriteLine("Can you teach in two classes at the same time?\n1.Yes(a)  2.No(b)");
+                    string answer = Console.ReadLine();
+                    if (answer[0] == 'a')
+                    {
+                        tch[t].Simultaneousteaching = true;
+                    }
+                    else
+                    {
+                        tch[t].Simultaneousteaching = false;
+                    }
+                    while (1 == 1)
+                    {
+                        Console.WriteLine("1.Choose lesson with time(a)\n2.Send exercise(b)\n3.List of student(c)\n4.Exit(e)");
+                        string ct = Console.ReadLine();
+                        if (ct[0] == 'a')
+                        {
+
+                        }
+                        if (ct[0] == 'b')
+                        {
+
+                        }
+                        if (ct[0] == 'c')
+                        {
+
+                        }
+
+                        if (ct[0] == 'e')
+                        {
+                            break;
+                        }
+                    }
+
+                }
+
+
+
 
 
 
