@@ -10,7 +10,7 @@ namespace m_project2
     {
         public string firstname;
         public string lastname;
-        public int dateofbirth;
+        public string dateofbirth;
         public string gender;
         public string father;
         public string username;
