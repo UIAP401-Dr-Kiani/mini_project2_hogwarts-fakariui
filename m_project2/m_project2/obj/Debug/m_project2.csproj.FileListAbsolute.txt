@@ -1,0 +1,8 @@
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\bin\Debug\m_project2.exe.config
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\bin\Debug\m_project2.exe
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\bin\Debug\m_project2.pdb
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\obj\Debug\m_project2.csproj.AssemblyReference.cache
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\obj\Debug\m_project2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\obj\Debug\m_project2.csproj.CoreCompileInputs.cache
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\obj\Debug\m_project2.exe
+C:\Users\Fakari\Desktop\project_vs\mini_project2_hogwarts-fakariui\m_project2\m_project2\obj\Debug\m_project2.pdb

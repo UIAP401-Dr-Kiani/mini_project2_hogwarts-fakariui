@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace m_project2
 {
-    internal class Phytology
+    public class Phytology:Lesson
     {
+        public List<Plant> plant1;
+        public List<Plant> plant2;
+        public List<Plant> plant3;
+        public List<Plant> plant4;
     }
 }

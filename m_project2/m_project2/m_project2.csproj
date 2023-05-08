@@ -43,8 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="Allowed Human.cs" />
+    <Compile Include="Chemistry.cs" />
+    <Compile Include="Dorm.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="Human.cs" />
+    <Compile Include="Lesson.cs" />
+    <Compile Include="Magic.cs" />
+    <Compile Include="Phytology.cs" />
+    <Compile Include="Plant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sport.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

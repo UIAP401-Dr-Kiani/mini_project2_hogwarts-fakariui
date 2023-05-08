@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace m_project2
 {
-    internal class Chemistry
+    public class Chemistry:Lesson
     {
+        public List<string> chemicals;
     }
 }

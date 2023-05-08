@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace m_project2
 {
-    internal class Sport
+    internal class Sport:Lesson
     {
+
     }
 }

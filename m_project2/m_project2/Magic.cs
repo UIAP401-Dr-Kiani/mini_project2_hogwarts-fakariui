@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace m_project2
 {
-    internal class Magic
+    public class Magic:Lesson
     {
+        public List<string> charm;
     }
 }
