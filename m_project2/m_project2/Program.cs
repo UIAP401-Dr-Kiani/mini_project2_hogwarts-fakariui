@@ -47,7 +47,7 @@ namespace m_project2
                 file.Close();
             }
 
-            Console.ReadKey();
+            
             int j = 0;
             for (int i = 0; i < ah.Length; i++)
             {
@@ -83,7 +83,7 @@ namespace m_project2
             while (1 == 1)
             {
                 Console.WriteLine("Choose one:");
-                Console.WriteLine("a)dombeldor\nb)teacher\nc)student");
+                Console.WriteLine("a)dombeldor\nb)teacher\nc)student\ne)Exit");
                 string c = Console.ReadLine();
                 if (c[0] == 'a')
                 {
@@ -203,18 +203,98 @@ namespace m_project2
                     }
 
                 }
+                if (c[0] == 'c')
+                {
+                    int s = 0;
+                    while (1 == 1)
+                    {
+                        Console.Write("Enter username:");
+                        string username2 = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.Write("Enter password");
+                        string password2 = Console.ReadLine();
+                        Console.WriteLine();
+
+                        for (int i = 0; i < std.Length; i++)
+                        {
+                            if (std[i].username == username2 && std[i].password == password2)
+                            {
+                                Console.WriteLine("correct!");
+                                s = i;
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("incorrect,pleas enter again!");
+                            }
+                        }
+                    }
+                    Console.WriteLine("What semester are you in?\n1.one\n2.two\n3.three\n4.four");
+                    string answer1 = Console.ReadLine();
+                    std[s].Term = Convert.ToInt32(answer1[0]);
+                    if (answer1[0] != '1')
+                    {
+                        Console.WriteLine("What is your group?\n1.Hufflepuff(a)\n2.Gryffindor(b)\n3.Ravenclaw(c)\n4.Slytherin(d)");
+                        string answer2 = Console.ReadLine();
+                        if (answer2[0] == 'a')
+                        {
+                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Hufflepuff", true);
+                        }
+                        if (answer2[0] == 'b')
+                        {
+                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Gryffindor", true);
+                        }
+                        if (answer2[0] == 'c')
+                        {
+                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Ravenclaw", true);
+                        }
+                        if (answer2[0] == 'd')
+                        {
+                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Slytherin", true);
+                        }
+
+                    }
+                    while (1 == 1)
+                    {
+                        Console.WriteLine("1.going to the restaurant(a)\n2.train(b)\n3.Sending letter(c)\n4.List of letters(d)\n5.Curriculum(f)\n7.Forest(g)\n8.Scores(h)\n6.Exit(e)");
+                        string cs = Console.ReadLine();
+                        if (cs[0] == 'a')
+                        {
+                            if (std[s].Term == 1)
+                            {
+                                Console.WriteLine("1.Get the curriculum(a)\n2.Get the dormitory code(b)\n3.Group(c)");
+                            }
+                            else
+                            {
+                                Console.WriteLine("1.Get the dormitory code(a)\n2.Select unit(b)");
+                            }
+                        }
+                        if (cs[0] == 'b')
+                        {
+
+                        }
+                        if (cs[0] == 'c')
+                        {
+
+                        }
+
+                        if (cs[0] == 'e')
+                        {
+                            break;
+                        }
+                    }
+
+                }
 
 
-
-
-
-
-
-
+                if (c[0] == 'e')
+                {
+                    break;
+                }
 
             }
 
-
+            Console.ReadKey();
 
         }
     }
