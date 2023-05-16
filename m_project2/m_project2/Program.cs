@@ -166,33 +166,46 @@ namespace m_project2
                     int t = 0;
                     while (1 == 1)
                     {
-                        Console.Write("Enter username:");
-                        string username1 = Console.ReadLine();
-                        Console.WriteLine();
-                        Console.Write("Enter password");
-                        string password1 = Console.ReadLine();
-                        Console.WriteLine();
-
-                        for (int i = 0; i < yt ; i++)
+                        Console.WriteLine("enter your lastname:");
+                        string lastname = Console.ReadLine();
+                        for (int i = 0; i < yt; i++)
                         {
-                            if (tch[i].username == username1 && tch[i].password == password1)
+                            if (tch[i].lastname == lastname)
                             {
-                                Console.WriteLine("correct!");
                                 t = i;
+                                while (1 == 1)
+                                {
+                                    Console.Write("Enter username:");
+                                    string username1 = Console.ReadLine();
+                                    Console.WriteLine();
+                                    Console.Write("Enter password:");
+                                    string password1 = Console.ReadLine();
+                                    Console.WriteLine();
+                                    if (tch[t].username == username1 && tch[t].password == password1)
+                                    {
+                                        Console.WriteLine("correct!");
+                                        w = 1;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("incorrect,pleas enter again!");
+                                    }
+
+                                }
                                 w = 1;
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine("incorrect,pleas enter again!");
-                                break;
+                                if (i == yt - 1)
+                                {
+                                    Console.WriteLine("The person not found!");
+                                }
                             }
                         }
-                        if (w == 1)
-                        {
-                            break;
-                        }
                     }
+
                     Console.WriteLine("Can you teach in two classes at the same time?\n1.Yes(a)  2.No(b)");
                     string answer = Console.ReadLine();
                     if (answer[0] == 'a')
@@ -233,33 +246,46 @@ namespace m_project2
                     int s = 0;
                     while (1 == 1)
                     {
-                        Console.Write("Enter username:");
-                        string username2 = Console.ReadLine();
-                        Console.WriteLine();
-                        Console.Write("Enter password");
-                        string password2 = Console.ReadLine();
-                        Console.WriteLine();
-
-                        for (int i = 0; i < ys ; i++)
+                        Console.WriteLine("enter your lastname:");
+                        string lastname1 = Console.ReadLine();
+                        for (int i = 0; i < ys; i++)
                         {
-                            if (std[i].username == username2 && std[i].password == password2)
+                            if (std[i].lastname == lastname1)
                             {
-                                Console.WriteLine("correct!");
                                 s = i;
+                                while (1 == 1)
+                                {
+                                    Console.Write("Enter username:");
+                                    string username1 = Console.ReadLine();
+                                    Console.WriteLine();
+                                    Console.Write("Enter password:");
+                                    string password1 = Console.ReadLine();
+                                    Console.WriteLine();
+                                    if (std[s].username == username1 && std[s].password == password1)
+                                    {
+                                        Console.WriteLine("correct!");
+                                        q = 1;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("incorrect,pleas enter again!");
+                                    }
+
+                                }
                                 q = 1;
                                 break;
                             }
                             else
                             {
-                                Console.WriteLine("incorrect,pleas enter again!");
-                                break;
+                                if (i == ys - 1)
+                                {
+                                    Console.WriteLine("The person not found!");
+                                }
                             }
                         }
-                        if (q == 1)
-                        {
-                            break;
-                        }
                     }
+
                     Console.WriteLine("What semester are you in?\n1.one\n2.two\n3.three\n4.four");
                     string answer1 = Console.ReadLine();
                     std[s].Term = Convert.ToInt32(answer1[0]);
