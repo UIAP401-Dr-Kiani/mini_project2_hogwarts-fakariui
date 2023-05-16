@@ -9,7 +9,8 @@ namespace m_project2
     public class Allowed_Human:Human
     {
         private int numberofroom;
-        private string curriculum;
+        public List<Lesson> Lessons = new List<Lesson>();
+        public string curriculum;
         public enum Pet
         {
             rat,
@@ -25,10 +26,11 @@ namespace m_project2
             student,
         }
         public Role role;
-        private string[] letter;
+        //private string[] letter;
+        public string[] letter;
         public int Numberofroom { get; set; }
-        public string Curriculum { get; set; }
-        public string[] Letter { get; set; }
+        //public string Curriculum { get; set; }
+        //public string[] Letter { get; set; }
     
     }
 }

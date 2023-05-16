@@ -15,7 +15,8 @@ namespace m_project2
             Allowed_Human[] ah = new Allowed_Human[500];
             Student[] std = new Student[500];
             Teacher[] tch = new Teacher[500];
-            using (StreamReader file = new StreamReader("file.tsv"))
+            int y = 0;
+            using (StreamReader file = new StreamReader("TXT_DATA.tsv"))
             {
                 string ln;
                 int m = 0;
@@ -33,6 +34,7 @@ namespace m_project2
                     human[7] = race type
                     human[8] = role
                     */
+                    ah[m] = new Allowed_Human();
                     ah[m].firstname = human[0];
                     ah[m].lastname = human[1];
                     ah[m].dateofbirth=human[2];
@@ -40,19 +42,22 @@ namespace m_project2
                     ah[m].father = human[4];
                     ah[m].username = human[5];
                     ah[m].password = human[6];
-                    ah[m].racetype =(Human.Racetype) Enum.Parse(typeof(Human.Racetype),human[7],true);
+                    string h7 = human[7].Replace(" ", "");
+                    ah[m].racetype =(Human.Racetype) Enum.Parse(typeof(Human.Racetype),h7,true);
                     ah[m].role = (Allowed_Human.Role)Enum.Parse(typeof(Allowed_Human.Role),human[8],true);
                     m++;
+                    y++;
                 }
                 file.Close();
             }
 
-            
+            int ys = 0;
             int j = 0;
-            for (int i = 0; i < ah.Length; i++)
+            for (int i = 0; i < y ; i++)
             {
                 if ((int)ah[i].role == 1)
                 {
+                    std[j] = new Student();
                     std[j].firstname = ah[i].firstname;
                     std[j].lastname = ah[i].lastname;
                     std[j].dateofbirth = ah[i].dateofbirth;
@@ -62,21 +67,26 @@ namespace m_project2
                     std[j].password = ah[i].password;
                     std[j].racetype = ah[i].racetype;
                     j++;
+                    ys++;
                 }
             }
-            for (int i = 0; i < ah.Length; i++)
+            int r = 0;
+            int yt = 0;
+            for (int i = 0; i < y ; i++)
             {
                 if ((int)ah[i].role == 0)
                 {
-                    tch[j].firstname = ah[i].firstname;
-                    tch[j].lastname = ah[i].lastname;
-                    tch[j].dateofbirth = ah[i].dateofbirth;
-                    tch[j].gender = ah[i].gender;
-                    tch[j].father = ah[i].father;
-                    tch[j].username = ah[i].username;
-                    tch[j].password = ah[i].password;
-                    tch[j].racetype = ah[i].racetype;
-                    j++;
+                    tch[r] = new Teacher();
+                    tch[r].firstname = ah[i].firstname;
+                    tch[r].lastname = ah[i].lastname;
+                    tch[r].dateofbirth = ah[i].dateofbirth;
+                    tch[r].gender = ah[i].gender;
+                    tch[r].father = ah[i].father;
+                    tch[r].username = ah[i].username;
+                    tch[r].password = ah[i].password;
+                    tch[r].racetype = ah[i].racetype;
+                    r++;
+                    yt++;
                 }
             }
 
@@ -107,22 +117,24 @@ namespace m_project2
                     }
                     while (1 == 1)
                     {
-                        Console.WriteLine("1.Sending letter(a)\n2.List of letters(b)\n3.Send train tickets(c)\n4.Curriculum for first semester students(d)\n5.Gardening(f)\n6.Exit(e)");
+                        Console.WriteLine("1.Sending letter(a)\n2.List of letters(b)\n3.Send train tickets(c)\n4.Completing the curriculum(d)\n5.Curriculum for first semester students(f)\n5.Gardening(g)\n6.Exit(e)");
                         string cd = Console.ReadLine();
                         if (cd[0] == 'a')
                         {
                             for (int i = 0; i < std.Length; i++)
                             {
-                                std[i].Letter[0] = dombeldor.entry();//////////////
+                                std[i].letter[0] = dombeldor.entry();//////////////
                             }
                             Console.WriteLine("Letters have been sent successfully");
                         }
                         if (cd[0] == 'b')
                         {
-                            for (int i = 0; i < dombeldor.Letter.Length; i++)
+                            /*for (int i = 0; i < dombeldor.letter.Length; i++)
                             {
-                                Console.WriteLine(dombeldor.Letter[i]);
-                            }
+                                Console.WriteLine(dombeldor.letter[i]);
+                                
+                            }*/
+                            dombeldor.List_Letters();
                         }
                         if (cd[0] == 'c')
                         {
@@ -131,10 +143,15 @@ namespace m_project2
                         if (cd[0] == 'd')
                         {
                             //**********
+
                         }
                         if (cd[0] == 'f')
                         {
                             //*****
+                        }
+                        if (cd[0] == 'g')
+                        {
+                            //////////
                         }
                         if (cd[0] == 'e')
                         {
@@ -145,6 +162,7 @@ namespace m_project2
                 }
                 if (c[0] == 'b')
                 {
+                    int w = 0;
                     int t = 0;
                     while (1 == 1)
                     {
@@ -155,18 +173,24 @@ namespace m_project2
                         string password1 = Console.ReadLine();
                         Console.WriteLine();
 
-                        for (int i = 0; i < tch.Length; i++)
+                        for (int i = 0; i < yt ; i++)
                         {
                             if (tch[i].username == username1 && tch[i].password == password1)
                             {
                                 Console.WriteLine("correct!");
                                 t = i;
+                                w = 1;
                                 break;
                             }
                             else
                             {
                                 Console.WriteLine("incorrect,pleas enter again!");
+                                break;
                             }
+                        }
+                        if (w == 1)
+                        {
+                            break;
                         }
                     }
                     Console.WriteLine("Can you teach in two classes at the same time?\n1.Yes(a)  2.No(b)");
@@ -205,6 +229,7 @@ namespace m_project2
                 }
                 if (c[0] == 'c')
                 {
+                    int q = 0;
                     int s = 0;
                     while (1 == 1)
                     {
@@ -215,18 +240,24 @@ namespace m_project2
                         string password2 = Console.ReadLine();
                         Console.WriteLine();
 
-                        for (int i = 0; i < std.Length; i++)
+                        for (int i = 0; i < ys ; i++)
                         {
                             if (std[i].username == username2 && std[i].password == password2)
                             {
                                 Console.WriteLine("correct!");
                                 s = i;
+                                q = 1;
                                 break;
                             }
                             else
                             {
                                 Console.WriteLine("incorrect,pleas enter again!");
+                                break;
                             }
+                        }
+                        if (q == 1)
+                        {
+                            break;
                         }
                     }
                     Console.WriteLine("What semester are you in?\n1.one\n2.two\n3.three\n4.four");
@@ -256,7 +287,7 @@ namespace m_project2
                     }
                     while (1 == 1)
                     {
-                        Console.WriteLine("1.going to the restaurant(a)\n2.train(b)\n3.Sending letter(c)\n4.List of letters(d)\n5.Curriculum(f)\n7.Forest(g)\n8.Scores(h)\n6.Exit(e)");
+                        Console.WriteLine("1.going to the restaurant(a)\n2.train(b)\n3.Sending letter(c)\n4.List of letters(d)\n5.Curriculum(f)\n6.Forest(g)\n7.Scores(h)\n8.Exit(e)");
                         string cs = Console.ReadLine();
                         if (cs[0] == 'a')
                         {
@@ -277,7 +308,10 @@ namespace m_project2
                         {
 
                         }
-
+                        if (cs[0] == 'd')
+                        {
+                            std[s].List_Letters();
+                        }
                         if (cs[0] == 'e')
                         {
                             break;

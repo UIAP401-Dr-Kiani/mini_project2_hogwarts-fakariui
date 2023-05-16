@@ -19,5 +19,15 @@ namespace m_project2
         {
             return ("Hello!you cane enter Hogwarts school.");
         }
+        public void List_Letters()
+        {
+            for(int i=0; i<letter.Length; i++)
+            {
+                if (letter[i]!= null)
+                {
+                    Console.WriteLine(letter[i]);
+                }
+            }
+        }
     }
 }

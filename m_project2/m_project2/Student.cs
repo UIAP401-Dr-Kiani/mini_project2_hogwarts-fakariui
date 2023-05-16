@@ -14,5 +14,15 @@ namespace m_project2
         public int PassedUnits { get; set; }
         public int NumberofDorm { get; set; }
         public int Term { get; set; }
+        public void List_Letters()
+        {
+            for(int i=0; i < letter.Length; i++)
+            {
+                if (letter[i] != null)
+                {
+                    Console.WriteLine(letter[i]);
+                }
+            }
+        }
     }
 }
