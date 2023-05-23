@@ -18,8 +18,12 @@ namespace m_project2
         public Type1 type1;
         private int score;
         public int Score { get; set; }
-        public List<Group> group;
-        public List<Group> play;
+        public List<Allowed_Human> group_Hufflepuff = new List<Allowed_Human>();
+        public List<Allowed_Human> group_Gryffindor = new List<Allowed_Human>();
+        public List<Allowed_Human> group_Ravenclaw = new List<Allowed_Human>();
+        public List<Allowed_Human> group_Slytherin = new List<Allowed_Human>();
+        public List<Allowed_Human> play = new List<Allowed_Human>();
+       
 
     
     }

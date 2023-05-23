@@ -11,6 +11,11 @@ namespace m_project2
     {
         static void Main(string[] args)
         {
+            int tchek = 0;
+            int schek = 0;
+            int train = 0;
+            Lesson physic = new Lesson();
+            Lesson math = new Lesson();
             Admin dombeldor = new Admin();
             Allowed_Human[] ah = new Allowed_Human[500];
             Student[] std = new Student[500];
@@ -123,7 +128,7 @@ namespace m_project2
                         {
                             for (int i = 0; i < std.Length; i++)
                             {
-                                std[i].letter[0] = dombeldor.entry();//////////////
+                                std[i].letters.Add(dombeldor.entry());
                             }
                             Console.WriteLine("Letters have been sent successfully");
                         }
@@ -193,8 +198,10 @@ namespace m_project2
                                     }
 
                                 }
-                                w = 1;
-                                break;
+                                if (w == 1)
+                                {
+                                    break;
+                                }
                             }
                             else
                             {
@@ -204,17 +211,24 @@ namespace m_project2
                                 }
                             }
                         }
+                        if (w == 1)
+                        {
+                            break;
+                        }
                     }
-
-                    Console.WriteLine("Can you teach in two classes at the same time?\n1.Yes(a)  2.No(b)");
-                    string answer = Console.ReadLine();
-                    if (answer[0] == 'a')
+                    if (tchek == 0)
                     {
-                        tch[t].Simultaneousteaching = true;
-                    }
-                    else
-                    {
-                        tch[t].Simultaneousteaching = false;
+                        Console.WriteLine("Can you teach in two classes at the same time?\n1.Yes(a)  2.No(b)");
+                        string answer = Console.ReadLine();
+                        if (answer[0] == 'a')
+                        {
+                            tch[t].Simultaneousteaching = true;
+                        }
+                        else
+                        {
+                            tch[t].Simultaneousteaching = false;
+                        }
+                        tchek++;
                     }
                     while (1 == 1)
                     {
@@ -244,6 +258,7 @@ namespace m_project2
                 {
                     int q = 0;
                     int s = 0;
+
                     while (1 == 1)
                     {
                         Console.WriteLine("enter your lastname:");
@@ -273,8 +288,11 @@ namespace m_project2
                                     }
 
                                 }
-                                q = 1;
-                                break;
+                                if (q == 1)
+                                {
+                                    break;
+                                }
+
                             }
                             else
                             {
@@ -284,32 +302,39 @@ namespace m_project2
                                 }
                             }
                         }
+                        if (q == 1)
+                        {
+                            break;
+                        }
                     }
-
-                    Console.WriteLine("What semester are you in?\n1.one\n2.two\n3.three\n4.four");
-                    string answer1 = Console.ReadLine();
-                    std[s].Term = Convert.ToInt32(answer1[0]);
-                    if (answer1[0] != '1')
+                    if (schek == 0)
                     {
-                        Console.WriteLine("What is your group?\n1.Hufflepuff(a)\n2.Gryffindor(b)\n3.Ravenclaw(c)\n4.Slytherin(d)");
-                        string answer2 = Console.ReadLine();
-                        if (answer2[0] == 'a')
+                        Console.WriteLine("What semester are you in?\n1.one\n2.two\n3.three\n4.four");
+                        string answer1 = Console.ReadLine();
+                        std[s].Term = Convert.ToInt32(answer1[0]);
+                        if (answer1[0] != '1')
                         {
-                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Hufflepuff", true);
-                        }
-                        if (answer2[0] == 'b')
-                        {
-                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Gryffindor", true);
-                        }
-                        if (answer2[0] == 'c')
-                        {
-                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Ravenclaw", true);
-                        }
-                        if (answer2[0] == 'd')
-                        {
-                            std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Slytherin", true);
-                        }
+                            Console.WriteLine("What is your group?\n1.Hufflepuff(a)\n2.Gryffindor(b)\n3.Ravenclaw(c)\n4.Slytherin(d)");
+                            string answer2 = Console.ReadLine();
+                            if (answer2[0] == 'a')
+                            {
+                                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Hufflepuff", true);
+                            }
+                            if (answer2[0] == 'b')
+                            {
+                                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Gryffindor", true);
+                            }
+                            if (answer2[0] == 'c')
+                            {
+                                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Ravenclaw", true);
+                            }
+                            if (answer2[0] == 'd')
+                            {
+                                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Slytherin", true);
+                            }
 
+                        }
+                        schek++;
                     }
                     while (1 == 1)
                     {

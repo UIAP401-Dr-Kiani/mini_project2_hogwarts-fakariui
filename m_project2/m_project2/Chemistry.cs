@@ -8,6 +8,6 @@ namespace m_project2
 {
     public class Chemistry:Lesson
     {
-        public List<string> chemicals;
+        public List<string> chemicals=new List<string>();
     }
 }

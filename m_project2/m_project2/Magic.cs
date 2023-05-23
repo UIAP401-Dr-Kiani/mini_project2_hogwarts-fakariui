@@ -8,6 +8,6 @@ namespace m_project2
 {
     public class Magic:Lesson
     {
-        public List<string> charm;
+        public List<string> charm=new List<string>();
     }
 }

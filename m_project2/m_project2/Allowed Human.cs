@@ -8,9 +8,7 @@ namespace m_project2
 {
     public class Allowed_Human:Human
     {
-        private int numberofroom;
         public List<Lesson> Lessons = new List<Lesson>();
-        public string curriculum;
         public enum Pet
         {
             rat,
@@ -18,7 +16,7 @@ namespace m_project2
             owl,
         }
         public Pet pet;
-        public Group group;
+        public Group group = new Group();
         public bool baggage;
         public enum Role
         {
@@ -26,11 +24,17 @@ namespace m_project2
             student,
         }
         public Role role;
-        //private string[] letter;
-        public string[] letter;
-        public int Numberofroom { get; set; }
-        //public string Curriculum { get; set; }
-        //public string[] Letter { get; set; }
-    
+        public List<string> letters = new List<string>();
+        public void List_Letters()
+        {
+            for (int i = 0; i < letters.Count; i++)
+            {
+                if (letters[i] != null)
+                {
+                    Console.WriteLine(letters[i]);
+                }
+            }
+        }
+
     }
 }

@@ -8,32 +8,30 @@ namespace m_project2
 {
     public class Dorm
     {
-        private int floor;
-        private int room;
-        private int bed;
+        private static int floor;
+        private static int room;
+        private static int bed;
         private string gender;
-        public int Floor { get; set; }
-        public int Room { get; set; }
-        public int Bed { get; set; }
+        public static int Floor { get; set; }
+        public static  int Room { get; set; }
+        public static int Bed { get; set; }
         public string Gender { get; set; }
-        public Dorm(int _floor, int _room, int _bed)
-        {
-            floor = _floor;
-            room = _room;
-            bed = _bed;
-        }
+        public static List<int> Women_dormitory = new List<int>();
+        public static List<int> Men_dormitory = new List<int>();
+
         public static void Code()
         {
-            for (int floor = 1; floor <= 4; floor++)
+            for ( Floor = 1; Floor <= 6; Floor++)
             {
-                int floor1 = floor * 100;
-                for (int room = 1; room <= 5; room++)
+                int floor1 = Floor * 100;
+                for ( Room = 0; Room <= 9; Room++)
                 {
-                    int room1 = room * 10;
-                    for (int bed = 1; bed <= 3; bed++)
+                    int room1 = Room * 10;
+                    for ( Bed = 1; Bed <= 5; Bed++)
                     {
-                        int cod = floor1 + room1 + bed;
-                        Console.WriteLine(cod);
+                        int cod = floor1 + room1 + Bed;
+                        Women_dormitory.Add( cod );
+                        Men_dormitory.Add(cod);
                     }
                 }
             }
