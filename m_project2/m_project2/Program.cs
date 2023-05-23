@@ -14,6 +14,7 @@ namespace m_project2
             int tchek = 0;
             int schek = 0;
             int train = 0;
+            DateTime date= DateTime.Now;
             Lesson physic = new Lesson();
             Lesson math = new Lesson();
             Admin dombeldor = new Admin();
@@ -122,41 +123,67 @@ namespace m_project2
                     }
                     while (1 == 1)
                     {
-                        Console.WriteLine("1.Sending letter(a)\n2.List of letters(b)\n3.Send train tickets(c)\n4.Completing the curriculum(d)\n5.Curriculum for first semester students(f)\n5.Gardening(g)\n6.Exit(e)");
+                        Console.WriteLine("1.Send arrival letter and train ticket(a)\n2.List of letters(b)\n3.Send a return tickets(c)\n4.Completing the curriculum(d)\n5.Curriculum for first semester students(f)\n6.Garden(g)\n7.Add the plant(h)\n8.Exit(e)");
                         string cd = Console.ReadLine();
                         if (cd[0] == 'a')
                         {
                             for (int i = 0; i < std.Length; i++)
                             {
                                 std[i].letters.Add(dombeldor.entry());
+                                dombeldor.ticket(std, i);
                             }
                             Console.WriteLine("Letters have been sent successfully");
                         }
                         if (cd[0] == 'b')
                         {
-                            /*for (int i = 0; i < dombeldor.letter.Length; i++)
-                            {
-                                Console.WriteLine(dombeldor.letter[i]);
-                                
-                            }*/
                             dombeldor.List_Letters();
                         }
                         if (cd[0] == 'c')
                         {
-                            //*******
+                            dombeldor.return_ticket(ys, std);
                         }
                         if (cd[0] == 'd')
                         {
-                            //**********
-
+                            dombeldor.Completing_curriculum(yt, tch, dombeldor);
                         }
                         if (cd[0] == 'f')
                         {
-                            //*****
+                            dombeldor.select_unit1(dombeldor, std, ys);
                         }
                         if (cd[0] == 'g')
                         {
-                            //////////
+                            Phytology phy = new Phytology();
+                            Console.WriteLine("Specify the name and number of plants for each term");
+                            Console.WriteLine("the first semester plants:");
+                            dombeldor.garden1(phy);
+                            Console.WriteLine("the second semester plants:");
+                            dombeldor.garden2(phy);
+                            Console.WriteLine("the third semester plants:");
+                            dombeldor.garden3(phy);
+                            ; Console.WriteLine("the fourth semester plants:");
+                            dombeldor.garden4(phy);
+                        }
+                        if (cd[0] == 'h')
+                        {
+                            Phytology phy = new Phytology();
+                            Console.WriteLine("1.the first semester 2.the second semester 3.the third semester 4.the fourth semester");
+                            int cdh = Convert.ToInt32(Console.ReadLine());
+                            if (cdh == 1)
+                            {
+                                dombeldor.garden1(phy);
+                            }
+                            if (cdh == 2)
+                            {
+                                dombeldor.garden2(phy);
+                            }
+                            if (cdh == 3)
+                            {
+                                dombeldor.garden3(phy);
+                            }
+                            if (cdh == 4)
+                            {
+                                dombeldor.garden4(phy);
+                            }
                         }
                         if (cd[0] == 'e')
                         {
