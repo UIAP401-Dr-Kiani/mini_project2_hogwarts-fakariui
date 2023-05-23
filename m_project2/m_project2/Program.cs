@@ -259,21 +259,17 @@ namespace m_project2
                     }
                     while (1 == 1)
                     {
-                        Console.WriteLine("1.Choose lesson with time(a)\n2.Send exercise(b)\n3.List of student(c)\n4.Exit(e)");
+                        Console.WriteLine("1.Choose lesson with time(a)\n2.List of lessons(b)\n3.Exit(e)");
                         string ct = Console.ReadLine();
                         if (ct[0] == 'a')
                         {
-
+                            tch[t].Chooselesson(tch, t);
                         }
                         if (ct[0] == 'b')
                         {
-
+                            tch[t].List_lessons(tch, t);
                         }
-                        if (ct[0] == 'c')
-                        {
-
-                        }
-
+                        
                         if (ct[0] == 'e')
                         {
                             break;
