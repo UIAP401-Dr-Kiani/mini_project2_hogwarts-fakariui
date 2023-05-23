@@ -337,23 +337,28 @@ namespace m_project2
                         std[s].Term = Convert.ToInt32(answer1[0]);
                         if (answer1[0] != '1')
                         {
+                            Group gr = new Group();
                             Console.WriteLine("What is your group?\n1.Hufflepuff(a)\n2.Gryffindor(b)\n3.Ravenclaw(c)\n4.Slytherin(d)");
                             string answer2 = Console.ReadLine();
                             if (answer2[0] == 'a')
                             {
                                 std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Hufflepuff", true);
+                                gr.group_Hufflepuff.Add(std[s]);
                             }
                             if (answer2[0] == 'b')
                             {
                                 std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Gryffindor", true);
+                                gr.group_Gryffindor.Add(std[s]);
                             }
                             if (answer2[0] == 'c')
                             {
                                 std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Ravenclaw", true);
+                                gr.group_Ravenclaw.Add(std[s]);
                             }
                             if (answer2[0] == 'd')
                             {
                                 std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Slytherin", true);
+                                gr.group_Slytherin.Add(std[s]);
                             }
 
                         }
@@ -361,31 +366,285 @@ namespace m_project2
                     }
                     while (1 == 1)
                     {
-                        Console.WriteLine("1.going to the restaurant(a)\n2.train(b)\n3.Sending letter(c)\n4.List of letters(d)\n5.Curriculum(f)\n6.Forest(g)\n7.Scores(h)\n8.Exit(e)");
+                        Console.WriteLine("1.going to the restaurant(a)\n2.train(b)\n3.Sending a letter to return(c)\n4.List of letters(d)\n5.Curriculum(f)\n6.Scores(h)\n7.Exit(e)");
                         string cs = Console.ReadLine();
-                        if (cs[0] == 'a')
+                        if (train != 0)
                         {
-                            if (std[s].Term == 1)
+
+
+                            if (cs[0] == 'a')
                             {
-                                Console.WriteLine("1.Get the curriculum(a)\n2.Get the dormitory code(b)\n3.Group(c)");
-                            }
-                            else
-                            {
-                                Console.WriteLine("1.Get the dormitory code(a)\n2.Select unit(b)");
+                                int dsm = 0;
+                                int dsw = 0;
+                                Dorm.Code();
+                                for (int d = 0; d < ys; d++)
+                                {
+                                    if (std[d].gender == "female")
+                                    {
+                                        std[d].NumberofDorm = Dorm.Women_dormitory[dsw];
+                                        dsw++;
+                                    }
+                                    if (std[d].gender == "male")
+                                    {
+                                        std[d].NumberofDorm = Dorm.Men_dormitory[dsm];
+                                        dsm++;
+                                    }
+                                }
+                                if (std[s].Term == 1)
+                                {
+                                    while (1 == 1)
+                                    {
+
+
+                                        Console.WriteLine("1.Get the curriculum(a)\n2.Get the dormitory code(b)\n3.Group(c)\n4.Exit(e)");
+                                        string cst1 = Console.ReadLine();
+                                        if (cst1[0] == 'a')
+                                        {
+                                            std[s].Get_Curriculum(std, s);
+                                        }
+                                        if (cst1[0] == 'b')
+                                        {
+
+                                            Console.WriteLine($"Your dorm code is {std[s].NumberofDorm}");
+                                        }
+                                        if (cst1[0] == 'c')
+                                        {
+
+                                            std[s].rand_group(std, s);
+                                        }
+                                        if (cst1[0] == 'e')
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    while (1 == 1)
+                                    {
+
+                                        Console.WriteLine("1.Get the dormitory code(a)\n2.Select unit(b)\n3.Exit(e)");
+                                        string cst2 = Console.ReadLine();
+                                        if (cst2[0] == 'a')
+                                        {
+
+                                            Console.WriteLine($"Your dorm code is {std[s].NumberofDorm}");
+                                        }
+                                        if (cst2[0] == 'b')
+                                        {
+                                            int nl = 0;
+                                            Console.WriteLine("Choose lessons");
+                                            while (1 == 1)
+                                            {
+                                                Console.WriteLine("How many lessons do you want to have?");
+                                                nl = Convert.ToInt32(Console.ReadLine());
+                                                if (nl > 5)
+                                                {
+                                                    Console.WriteLine("you can not choose more than 5 Lessons");
+                                                }
+                                                if (nl < 2)
+                                                {
+                                                    Console.WriteLine("you can not choose less than 2 Lessons");
+                                                }
+                                                if (nl <= 5 && nl >= 2)
+                                                {
+                                                    break;
+                                                }
+                                            }
+                                            if (std[s].Term == 2)
+                                            {
+                                                for (int i = 0; i < dombeldor.Lesson2.Count; i++)
+                                                {
+                                                    Console.WriteLine($"{i} - Name of teacher:{dombeldor.Lesson2[i].name_teacher} - Name of Lessons:{dombeldor.Lesson2[i].Name} - Day:{dombeldor.Lesson2[i].day} - Time:{dombeldor.Lesson2[i].Time} - Capacity:{dombeldor.Lesson2[i].Capacity}");
+                                                    dombeldor.Lesson2[i].Code = 20 + i;
+                                                }
+                                                std[s].Select_Unite2(std, dombeldor, s, nl);
+                                                for (int u = 0; u < std[s].Lessons.Count; u++)
+                                                {
+                                                    for (int h = 0; h < yt; h++)
+                                                    {
+                                                        if (tch[h].lastname == std[s].Lessons[u].name_teacher)
+                                                        {
+                                                            for (int l = 0; l < tch[h].Lessons.Count; l++)
+                                                            {
+                                                                if (tch[h].Lessons[l].Name == std[s].Lessons[u].Name)
+                                                                {
+                                                                    tch[h].Lessons[l].students.Add(std[s]);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            if (std[s].Term == 3)
+                                            {
+                                                for (int i = 0; i < dombeldor.Lesson3.Count; i++)
+                                                {
+                                                    Console.WriteLine($"{i} - Name of teacher:{dombeldor.Lesson3[i].name_teacher} - Name of Lessons:{dombeldor.Lesson3[i].Name} - Day:{dombeldor.Lesson3[i].day} - Time:{dombeldor.Lesson3[i].Time} - Capacity:{dombeldor.Lesson3[i].Capacity}");
+                                                    dombeldor.Lesson3[i].Code = 30 + i;
+                                                }
+                                                std[s].Select_Unite3(std, dombeldor, s, nl);
+                                            }
+                                            if (std[s].Term == 4)
+                                            {
+                                                for (int i = 0; i < dombeldor.Lesson4.Count; i++)
+                                                {
+                                                    Console.WriteLine($"{i} - Name of teacher:{dombeldor.Lesson4[i].name_teacher} - Name of Lessons:{dombeldor.Lesson4[i].Name} - Day:{dombeldor.Lesson4[i].day} - Time:{dombeldor.Lesson4[i].Time} - Capacity:{dombeldor.Lesson4[i].Capacity}");
+                                                    dombeldor.Lesson4[i].Code = 40 + i;
+                                                }
+                                                std[s].Select_Unite4(std, dombeldor, s, nl);
+                                            }
+
+                                        }
+                                        if (cst2[0] == 'e')
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
                             }
                         }
                         if (cs[0] == 'b')
                         {
-
+                            if (date == std[s].dts)
+                            {
+                                Console.WriteLine("You can take the train");
+                                train = 1;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please wait until the train arrives");
+                            }
                         }
+                        if (train != 0) 
+                        { 
                         if (cs[0] == 'c')
                         {
-
+                            dombeldor.letters.Add(std[s].Return_Letter(std, s));
+                            Console.WriteLine("Letter has been sent successfully");
+                        }
                         }
                         if (cs[0] == 'd')
                         {
                             std[s].List_Letters();
                         }
+                        if (train != 0) 
+                        { 
+                        if (cs[0] == 'f')
+                        {
+                            while (1 == 1)
+                            {
+                                Console.WriteLine("choose lesson:");
+                                std[s].Curriculum(std, s);
+                                Console.WriteLine("Exit(5)");
+                                string e = Console.ReadLine();
+                                int ecod = Convert.ToInt32(e);
+                                if (ecod == 5)
+                                {
+                                    break;
+                                }
+                                for (int i = 0; i < std[s].Lessons.Count; i++)
+                                {
+                                    if (ecod == std[s].Lessons[i].Code)
+                                    {
+                                        while (1 == 1)
+                                        {
+                                            Console.WriteLine("a.exercise  b.scores");
+                                            string e1 = Console.ReadLine();
+                                            if (e1[0] == 'a')
+                                            {
+                                                if (std[s].Lessons[i].Name == "phytology")
+                                                {
+                                                    for (int f = 0; f < std[s].spractice.Count; f++)
+                                                    {
+                                                        Console.WriteLine(std[s].spractice[f]);
+                                                    }
+                                                    Console.WriteLine("---------------------------------------");
+                                                    Phytology phy = new Phytology();
+                                                    int tc = 0;
+                                                    for (int t = 0; t < yt; t++)
+                                                    {
+                                                        if (std[s].Lessons[i].name_teacher == tch[t].lastname)
+                                                        {
+                                                            tc = t;
+                                                        }
+                                                    }
+                                                    Console.WriteLine("please go to the forest and do the exercise.\nGarden(a)");
+                                                    string grd = Console.ReadLine();
+                                                    if (grd[0] == 'a')
+                                                    {
+                                                        Console.WriteLine("---------------------------------------");
+                                                        for (int n = 0; n < phy.plant1.Count; n++)
+                                                        {
+                                                            Console.WriteLine($"name={phy.plant1[n].Name}  number={phy.plant1[n].Number}");
+                                                        }
+                                                        for (int n = 0; n < phy.plant2.Count; n++)
+                                                        {
+                                                            Console.WriteLine($"name={phy.plant2[n].Name}  number={phy.plant2[n].Number}");
+                                                        }
+                                                        for (int n = 0; n < phy.plant3.Count; n++)
+                                                        {
+                                                            Console.WriteLine($"name={phy.plant3[n].Name}  number={phy.plant3[n].Number}");
+                                                        }
+                                                        for (int n = 0; n < phy.plant4.Count; n++)
+                                                        {
+                                                            Console.WriteLine($"name={phy.plant4[n].Name}  number={phy.plant4[n].Number}");
+                                                        }
+                                                        Console.WriteLine("---------------------------------------");
+                                                    }
+                                                    while (1 == 1)
+                                                    {
+                                                        Console.WriteLine("Request to add a plant(a)  Send exercise(b)  Exit(e)");
+                                                        string aq = Console.ReadLine();
+                                                        if (aq[0] == 'a')
+                                                        {
+                                                            Console.WriteLine("name:");
+                                                            string nameps = Console.ReadLine();
+                                                            dombeldor.letters.Add($"Hello!I am{std[s].lastname}.Please add the {nameps} plant in the forest.");
+                                                            Console.WriteLine("done successfully");
+                                                        }
+                                                        if (aq[0] == 'b')
+                                                        {
+                                                            Console.WriteLine("How many types of plants should you choose?");
+                                                            int numps = Convert.ToInt32(Console.ReadLine());
+
+                                                            for (int u = 0; u < numps; u++)
+                                                            {
+                                                                Console.WriteLine("name:");
+                                                                string nameps = Console.ReadLine();
+                                                                Console.WriteLine("number:");
+                                                                int numberps = Convert.ToInt32(Console.ReadLine());
+                                                                tch[tc].tpractice.Add($"name of student:{std[s].lastname}  name:{nameps}  number:{numberps}");
+                                                            }
+                                                            Console.WriteLine("Submitted successfully");
+                                                        }
+                                                        if (aq[0] == 'e')
+                                                        {
+                                                            break;
+                                                        }
+                                                    }
+
+                                                }
+
+                                            }
+                                            if (e1[0] == 'b')
+                                            {
+                                                for (int a = 0; a < std[s].Lessons.Count; a++)
+                                                {
+                                                    Console.WriteLine(std[s].Lessons[i].scores[a]);
+                                                }
+                                            }
+                                            if (e1[0] == 'e')
+                                            {
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
                         if (cs[0] == 'e')
                         {
                             break;

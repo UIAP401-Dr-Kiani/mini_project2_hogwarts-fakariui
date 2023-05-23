@@ -234,5 +234,37 @@ namespace m_project2
         {
             return ($"Hello!I am {std[s].lastname}. I want to return my city.");
         }
+        public void rand_group(Student[]std , int s)
+        {
+            Group gr = new Group();
+            int group;
+            Random rand = new Random();
+            group = rand.Next(0, 3);
+
+            if (group == 0)
+            {
+                Console.WriteLine("yuor group is Hufflepuff");
+                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Hufflepuff", true);
+                gr.group_Hufflepuff.Add(std[s]);
+            }
+            if (group == 1)
+            {
+                Console.WriteLine("yuor group is Gryffindor");
+                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Gryffindor", true);
+                gr.group_Gryffindor.Add(std[s]);
+            }
+            if (group == 2)
+            {
+                Console.WriteLine("yuor group is Ravenclaw");
+                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Ravenclaw", true);
+                gr.group_Ravenclaw.Add(std[s]);
+            }
+            if (group == 3)
+            {
+                Console.WriteLine("yuor group is Slytherin");
+                std[s].group.type1 = (Group.Type1)Enum.Parse(typeof(Group.Type1), "Slytherin", true);
+                gr.group_Slytherin.Add(std[s]);
+            }
+        }
     }
 }
